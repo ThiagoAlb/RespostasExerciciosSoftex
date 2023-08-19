@@ -12,9 +12,10 @@ function votar() {
     console.log('Candidato Z: digite 3');
     console.log('Branco: digite 0');
     console.log('Nulo: qualquer número diferente desses acima.');
+    
     const voto = pergunta.questionInt('Digite o número do candidato: ');
     
-    /*
+    
     if(voto === 1) {
         candidatoX++;
     } else if(voto === 2) {
@@ -23,13 +24,13 @@ function votar() {
         candidatoZ++;
     } else if(voto === 0) {
         votosNulos++
-    } else if() {
-        
+    } else if(voto === '') {
+        console.log('Número inválido. Vote novamente!')
+    } else {
+        votosNulos++;
     }
 
-*/
-
-
+    /*
     switch(voto) {
         case 1:
             candidatoX++;
@@ -46,7 +47,10 @@ function votar() {
         default:
             votosNulos++;
     }
+   */ 
 }
+
+
 
 function exibirResultado() {
     console.log('Resultado da eleição 2023: ');
@@ -89,4 +93,4 @@ while(!finalizar) {
     }
 }
 
-exibirResultado();
+exibirResultado()
