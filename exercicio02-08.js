@@ -13,25 +13,18 @@ function votar() {
     console.log('Branco: digite 0');
     console.log('Nulo: qualquer número diferente desses acima.');
     
-    const voto = pergunta.questionInt('Digite o número do candidato: ');
+    //parseInt transforma uma string em um number, porém se não puder ser convertido para um number, vira um NaN.
+    let voto = parseInt(pergunta.question('Digite o número do candidato: '));
     
-    
-    if(voto === 1) {
-        candidatoX++;
-    } else if(voto === 2) {
-        candidatoY++;
-    } else if(voto === 3) {
-        candidatoZ++;
-    } else if(voto === 0) {
-        votosNulos++
-    } else if(voto === '') {
-        console.log('Número inválido. Vote novamente!')
-    } else {
-        votosNulos++;
+    while(isNaN(voto)) {
+        console.log('Insira um número. Vote novamente.')
+        voto = pergunta.question('Digite o número do candidato: ');
     }
-
-    /*
+    
     switch(voto) {
+        case 0:
+            votosNulos++;
+            break;
         case 1:
             candidatoX++;
             break;
@@ -41,13 +34,10 @@ function votar() {
         case 3:
             candidatoZ++;
             break;
-        case 0:
-            votosNulos++;
-            break;
         default:
             votosNulos++;
     }
-   */ 
+
 }
 
 
@@ -83,7 +73,7 @@ while(!finalizar) {
     if(resposta === 'S') {
         finalizar = true;
     } else {
-        while(resposta === 'N') {
+        while(resposta !== 'S') {
             resposta = pergunta.question('Deseja finalizar a votação? (S/N) ').toLocaleUpperCase();
             if(resposta === 'S') {
                 finalizar = true;
